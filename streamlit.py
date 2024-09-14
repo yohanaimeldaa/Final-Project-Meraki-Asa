@@ -100,10 +100,10 @@ st.plotly_chart(fig_bar)
 st.write("### 3. Bagaimana total units yang terjual di New York City berdasarkan sale date?")
 
 
-trendd = dfm.groupby('SALE DATE')["TOTAL UNITS"].sum().reset_index()
+trenddd = dfm.groupby('SALE DATE')["TOTAL UNITS"].sum().reset_index()
 
 # --------------- D. Visualisasi
-fig_line = px.line(trendd,
+fig_line = px.line(trenddd,
         x='SALE DATE',
         y="TOTAL UNITS",
         title=f"TOTAL UNITS YANG TERJUAL BERDASARKAN SALE DATE",
