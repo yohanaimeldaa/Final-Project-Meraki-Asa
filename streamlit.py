@@ -73,7 +73,7 @@ trend = filtered_dfm.groupby("SALE DATE")[choices].sum().reset_index()
 fig_line = px.line(trend,
         x="SALE DATE",
         y=choices,
-        title=f"JUMLAH {choices} YANG TERJUAL BERDASARKAN SALE DATE",
+        title="JUMLAH {choices} YANG TERJUAL BERDASARKAN SALE DATE",
         markers=True,
         color_discrete_sequence=['blue'])
 
@@ -81,14 +81,14 @@ st.plotly_chart(fig_line)
 
 
 # --------------- C. Persiapan Data
-st.write("### 2. Bagaimana total units yang terjual di New York City berdasarkan neighborhood?")
-trend = dfm.groupby("NEIGHBORHOOD")['TOTAL UNITS'].sum().reset_index()
+st.write("### 2. Bagaimana jumlah residential units dan commercial units yang terjual di New York City berdasarkan neighborhood?")
+trendd = filtered_dfm.groupby("NEIGHBORHOOD")[choices].sum().reset_index()
 
 # --------------- D. Visualisasi
-fig_bar=px.bar(trend.sort_values(by="NEIGHBORHOOD", ascending=True),
+fig_bar=px.bar(trendd.sort_values(by="NEIGHBORHOOD", ascending=True),
        x="NEIGHBORHOOD",
-       y="TOTAL UNITS",
-       title="TOTAL UNITS BERDASARKAN NEIGHBORHOOD",
+       y=choices,
+       title="JUMLAH {choices} YANG TERJUAL BERDASARKAN NEIGHBORHOOD",
        color_discrete_sequence=['Brown'])
 
 st.plotly_chart(fig_bar)
