@@ -24,7 +24,7 @@ dfm = pd.read_pickle('nyc-rolling-sales.pk')
 with st.sidebar:
     # Menambahkan logo pribadi
     st.write("Halo, selamat datang!")
-    st.image("data-science.png")
+    st.image("asset\data-science.png")
     st.write("""
              Saya Yohana Poetri Imelda mempersembahkan Dashboard Analisis 
              Penjualan Properti di NYC, sebuah alat yang menganalisis 
@@ -73,7 +73,7 @@ trend = filtered_dfm.groupby("SALE DATE")[choices].sum().reset_index()
 fig_line = px.line(trend,
         x="SALE DATE",
         y=choices,
-        title="JUMLAH {choices} YANG TERJUAL BERDASARKAN SALE DATE",
+        title=f"JUMLAH {choices} YANG TERJUAL BERDASARKAN SALE DATE",
         markers=True,
         color_discrete_sequence=['blue'])
 
@@ -82,27 +82,29 @@ st.plotly_chart(fig_line)
 
 # --------------- C. Persiapan Data
 st.write("### 2. Bagaimana jumlah residential units dan commercial units yang terjual di New York City berdasarkan neighborhood?")
-choices = st.radio("Pick One Indicator!",
+
+choices1 = st.radio("Pick One Indicator Below!",
          ["RESIDENTIAL UNITS","COMMERCIAL UNITS"])
-trend = dfm.groupby("NEIGHBORHOOD")[choices].sum().reset_index()
+trendd = dfm.groupby("NEIGHBORHOOD")[choices1].sum().reset_index()
 
 # --------------- D. Visualisasi
-fig_bar=px.bar(trend.sort_values(by="NEIGHBORHOOD", ascending=True),
-       x="NEIGHBORHOOD",
-       y=choices,
-       title="JUMLAH {choices} YANG TERJUAL BERDASARKAN NEIGHBORHOOD",
+fig_bar=px.bar(trendd.sort_values(by=choices1, ascending=False),
+       x=choices1,
+       y="NEIGHBORHOOD",
+       title=f"JUMLAH {choices1} YANG TERJUAL BERDASARKAN NEIGHBORHOOD",
        color_discrete_sequence=['Brown'])
 
 st.plotly_chart(fig_bar)
+
 
 #--------------------------- ROW 3 -----------------------------------------
 st.write("### 3. Bagaimana total units yang terjual di New York City berdasarkan sale date?")
 
 
-trendd = dfm.groupby('SALE DATE')["TOTAL UNITS"].sum().reset_index()
+trenddd = dfm.groupby('SALE DATE')["TOTAL UNITS"].sum().reset_index()
 
 # --------------- D. Visualisasi
-fig_line = px.line(trendd,
+fig_line = px.line(trenddd,
         x='SALE DATE',
         y="TOTAL UNITS",
         title=f"TOTAL UNITS YANG TERJUAL BERDASARKAN SALE DATE",
