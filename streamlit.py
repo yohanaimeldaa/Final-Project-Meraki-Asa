@@ -23,13 +23,12 @@ dfm = pd.read_pickle('nyc-rolling-sales.pk')
 #----------------------------------Membuat sidebar ----------------------------------
 with st.sidebar:
     # Menambahkan logo pribadi
-    st.write("Hello 👋 Selamat Datang!")
+    st.write("Halo, Selamat Datang!")
     st.image("data-science.png")
     st.write("""
              Saya Yohana Poetri Imelda mempersembahkan Dashboard Analisis 
-             Penjualan Properti di NYC, sebuah alat yang memudahkan menganalisis 
-             data perusahaan dengan visualisasi yang mendalam dan interaktif. 
-             Mari temukan berbagai insight dari perusahaan kami.
+             Penjualan Properti di NYC, sebuah alat yang  menganalisis 
+             data perusahaan dengan visualisasi yang interaktif.
              """)
     st.caption('Copyright © Yohana Poetri Imelda 2024')
 
