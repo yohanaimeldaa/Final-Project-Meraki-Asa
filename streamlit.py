@@ -38,7 +38,7 @@ st.write("# Dashboard Analisis Penjualan Properti di NYC")
 st.write("""
          Analisis ini menggunakan bahasa pemrograman Python dan visualisasi 
          interaktif (Plotly Express) dan data yang digunakan adalah data penjualan 
-         mobil yang diambil dari https://www.kaggle.com/datasets/new-york-city/nyc-property-sales
+         properti di New York City yang diambil dari https://www.kaggle.com/datasets/new-york-city/nyc-property-sales
          """)
 with st.expander("Click here to see the dataset"):
     st.write("Data Penjualan Properti Di NYC",dfm)
