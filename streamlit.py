@@ -85,10 +85,10 @@ st.write("### 2. Bagaimana jumlah residential units dan commercial units yang te
 choices = st.radio("Pick One Indicator!",
          ["RESIDENTIAL UNITS","COMMERCIAL UNITS"])
 filtered_dfm = dfm[cond_min_max]
-trendd = filtered_dfm.groupby("NEIGHBORHOOD")[choices].sum().reset_index()
+trend = filtered_dfm.groupby("NEIGHBORHOOD")[choices].sum().reset_index()
 
 # --------------- D. Visualisasi
-fig_bar=px.bar(trendd.sort_values(by="NEIGHBORHOOD", ascending=True),
+fig_bar=px.bar(trend.sort_values(by="NEIGHBORHOOD", ascending=True),
        x="NEIGHBORHOOD",
        y=choices,
        title="JUMLAH {choices} YANG TERJUAL BERDASARKAN NEIGHBORHOOD",
@@ -100,10 +100,10 @@ st.plotly_chart(fig_bar)
 st.write("### 3. Bagaimana total units yang terjual di New York City berdasarkan sale date?")
 
 
-trenddd = dfm.groupby('SALE DATE')["TOTAL UNITS"].sum().reset_index()
+trendd = dfm.groupby('SALE DATE')["TOTAL UNITS"].sum().reset_index()
 
 # --------------- D. Visualisasi
-fig_line = px.line(trenddd,
+fig_line = px.line(trendd,
         x='SALE DATE',
         y="TOTAL UNITS",
         title=f"TOTAL UNITS YANG TERJUAL BERDASARKAN SALE DATE",
