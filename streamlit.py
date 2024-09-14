@@ -82,6 +82,9 @@ st.plotly_chart(fig_line)
 
 # --------------- C. Persiapan Data
 st.write("### 2. Bagaimana jumlah residential units dan commercial units yang terjual di New York City berdasarkan neighborhood?")
+choices = st.radio("Pick One Indicator!",
+         ["RESIDENTIAL UNITS","COMMERCIAL UNITS"])
+filtered_dfm = dfm[cond_min_max]
 trendd = filtered_dfm.groupby("NEIGHBORHOOD")[choices].sum().reset_index()
 
 # --------------- D. Visualisasi
